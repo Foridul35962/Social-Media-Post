@@ -17,7 +17,7 @@ const createPost = () => {
         const title = titleElement.current.value;
         const content = contentElement.current.value;
         const react = reactElement.current.value;
-        const tags = tagsElement.current.value.split();
+        const tags = tagsElement.current.value.split(" ");
         
         addPost(userId,title,content,react,tags);
 
