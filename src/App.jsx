@@ -11,11 +11,11 @@ const App = () => {
     <div>
       <PostListProvider>
         <Header></Header>
-        <div className="flex">
-          <div className="w-1/4">
+        <div className="flex mt-24 sm:mt-15">
+          <div className="fixed w-1/4">
             <SideBar page={page} setPage={setPage}></SideBar>
           </div>
-          <div className="w-3/4">
+          <div className="ml-[25%] w-3/4">
             {
               page === 'home' ? <HomePage></HomePage> : <CreatePost></CreatePost>
             }

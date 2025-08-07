@@ -1,6 +1,6 @@
 const header = () => {
     return (
-        <div className="py-3 w-full bg-gray-800 px-3 sm:px-0">
+        <div className="py-3 fixed top-0 left-0 z-50  w-full bg-gray-800 px-3 sm:px-0">
             <div className="container mx-auto w-full h-full flex items-center justify-between text-white">
                 <div className="md:flex md:items-center md:gap-10 flex justify-between md:w-2/4">
                     <div className="text-3xl font-bold">Side Bar</div>
