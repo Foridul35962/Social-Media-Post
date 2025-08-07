@@ -1,16 +1,30 @@
-import { useContext } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { postList, } from "../store/post-list-store"
 
-const homePage = () => {
 
-  const { posts, deletePost } = useContext(postList);
+
+const homePage = ({APIVariable,setAPIVariable}) => {
+
+  const { posts, deletePost, addApiPost } = useContext(postList);
+  
+  useEffect(() => {
+    if (APIVariable) {
+      fetch('https://dummyjson.com/posts')
+        .then(res => res.json())
+        .then(res => {
+          addApiPost(res.posts); // Pass full array
+          setAPIVariable(false);
+        });
+    }
+  }, [addApiPost]);
+
 
   return (
     <div className="p-10 w-full flex flex-col gap-5">
       {
-        posts.map((post) => (
-          <div key={post.userId} className="border-2 border-gray-400 rounded-2xl relative sm:w-3/4">
-            <button className="flex absolute -right-2 -top-2 p-1.5 text-white rounded-2xl bg-red-600 cursor-pointer" onClick={()=>deletePost(post.userId)}><i className="fa-solid fa-trash"></i></button>
+        posts.map((post,postIdx) => (
+          <div key={postIdx} className="border-2 border-gray-400 rounded-2xl relative sm:w-3/4">
+            <button className="flex absolute -right-2 -top-2 p-1.5 text-white rounded-2xl bg-red-600 cursor-pointer" onClick={() => deletePost(post.userId)}><i className="fa-solid fa-trash"></i></button>
             <div className="p-3">
               <div className="text-xl font-bold">{post.title}</div>
               <div className="py-2">{post.content}</div>

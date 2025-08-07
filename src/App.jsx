@@ -7,6 +7,7 @@ import PostListProvider from "./store/post-list-store";
 
 const App = () => {
   const [page, setPage] = useState("home");
+  const [APIVariable,setAPIVariable] = useState(true)
   return (
     <div>
       <PostListProvider>
@@ -17,7 +18,7 @@ const App = () => {
           </div>
           <div className="ml-[25%] w-3/4">
             {
-              page === 'home' ? <HomePage></HomePage> : <CreatePost></CreatePost>
+              page === 'home' ? <HomePage APIVariable={APIVariable} setAPIVariable={setAPIVariable}></HomePage> : <CreatePost></CreatePost>
             }
           </div>
         </div>
