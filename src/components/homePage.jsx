@@ -2,21 +2,18 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { postList, } from "../store/post-list-store"
 
 
-
-const homePage = ({APIVariable,setAPIVariable}) => {
-
-  const { posts, deletePost, addApiPost } = useContext(postList);
-  
+const homePage = () => {
+  const { posts, deletePost, addApiPost, apiLoaded, setApiLoaded } = useContext(postList);
   useEffect(() => {
-    if (APIVariable) {
+    if (!apiLoaded) {
       fetch('https://dummyjson.com/posts')
         .then(res => res.json())
         .then(res => {
           addApiPost(res.posts); // Pass full array
-          setAPIVariable(false);
+          setApiLoaded(true);
         });
     }
-  }, [addApiPost]);
+  }, []);
 
 
   return (
