@@ -10,7 +10,6 @@ const App = () => {
         <Header></Header>
         <div className="flex mt-24 xs:mt-15">
           <div className="fixed w-1/4">
-            {/* <SideBar page={page} setPage={setPage}></SideBar> */}
             <SideBar></SideBar>
           </div>
           <div className="ml-[25%] w-3/4">

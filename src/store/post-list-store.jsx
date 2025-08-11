@@ -7,7 +7,9 @@ export const postList = createContext({
     deletePost: () => { },
     addApiPost: () => { },
     apiLoaded: false,
-    setApiLoaded: () => { }
+    setApiLoaded: () => { },
+    isload: true,
+    setIsload: ()=>{}
 });
 
 const postReducer = (currPost, action) => {
@@ -43,7 +45,7 @@ const postListProvider = ({ children }) => {
 
     const [posts, dispatch] = useReducer(postReducer, DefaultPost);
     const [apiLoaded, setApiLoaded] = useState(false);
-
+    const [isload, setIsload] = useState(true);
 
     const addPost = (userId, title, content, react, tags) => {
         const addItem = {
@@ -76,7 +78,7 @@ const postListProvider = ({ children }) => {
     };
 
     return (
-        <postList.Provider value={{ posts, addPost, deletePost, addApiPost,apiLoaded,setApiLoaded }}>
+        <postList.Provider value={{ posts, addPost, deletePost, addApiPost,apiLoaded,setApiLoaded, isload, setIsload }}>
             {children}
         </postList.Provider>
     )
